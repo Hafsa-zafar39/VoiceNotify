@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Voice Notify</string>
     <string-array name="task_types">
+        <item>Select</item>
         <item>Work</item>
         <item>Exercise</item>
         <item>Leisure</item>

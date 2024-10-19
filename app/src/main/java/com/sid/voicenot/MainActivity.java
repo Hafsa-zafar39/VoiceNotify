@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private TimePicker timePicker;
-    private EditText taskDescription;
+    private EditText taskDescription, notes;
     private Spinner taskTypeSpinner;
     private Button submitButton;
     private ListView taskList;
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialize UI components
         timePicker = findViewById(R.id.timePicker);
         taskDescription = findViewById(R.id.taskDescription);
+        notes = findViewById(R.id.notes);  // Handle the notes input field
         taskTypeSpinner = findViewById(R.id.taskTypeSpinner);
         submitButton = findViewById(R.id.submitButton);
         taskList = findViewById(R.id.taskList);
@@ -51,16 +52,23 @@ public class MainActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int hour = timePicker.getHour(); // Use getHour() instead of getCurrentHour()
-                int minute = timePicker.getMinute(); // Use getMinute() instead of getCurrentMinute()
+                int hour = timePicker.getHour();
+                int minute = timePicker.getMinute();
                 String task = taskDescription.getText().toString();
+                String taskNotes = notes.getText().toString();  // Get the notes from the user
                 String taskType = taskTypeSpinner.getSelectedItem().toString();
 
+                // Make sure that the task description is not empty before adding
                 if (!task.isEmpty()) {
-                    String formattedTask = String.format("%02d:%02d - %s (%s)", hour, minute, task, taskType);
-                    tasks.add(formattedTask);
-                    adapter.notifyDataSetChanged();
-                    taskDescription.setText(""); // Clear the input field
+                    // Format the task with time, task, type, and notes
+                    String formattedTask = String.format("%02d:%02d - %s (%s)\nNotes: %s", hour, minute, task, taskType, taskNotes);
+                    tasks.add(formattedTask);  // Add the new task to the list
+                    adapter.notifyDataSetChanged();  // Refresh the list to show the new task
+
+                    // Clear the input fields after the task is added
+                    taskDescription.setText("");
+                    notes.setText("");
+                    taskTypeSpinner.setSelection(0);  // Reset the spinner to the first item
                 }
             }
         });
