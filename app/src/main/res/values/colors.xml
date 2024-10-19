@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primaryColor">#3F51B5</color>
-    <color name="lightGray">#f0f0f0</color>
+    <!-- Basic Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!-- Primary Color -->
+    <color name="colorPrimary">#3F51B5</color> <!-- You can change this to any color you prefer -->
+
+    <!-- Accent Color -->
+    <color name="colorAccent">#FF4081</color> <!-- You can change this to any color you prefer -->
+
+    <!-- Additional Colors -->
+    <color name="lightGray">#F5F5F5</color>
+    <color name="darkGray">#B0BEC5</color>
+    <color name="blueGray">#607D8B</color>
 </resources>

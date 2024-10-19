@@ -1,89 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
-    android:background="@color/lightGray">
+    android:padding="16dp"
+    android:background="@color/white">
 
-    <!-- Welcome Text -->
+    <!-- Welcome Message -->
     <TextView
-        android:id="@+id/welcomeText"
+        android:id="@+id/welcomeMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome! Enter Your Daily Tasks"
-        android:textSize="24sp"
-        android:textColor="@color/primaryColor"
+        android:text="Welcome to Voice Notify!"
+        android:textSize="26sp"
         android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="24dp"/>
+        android:textColor="@color/colorPrimary"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"/>
 
-    <!-- Form container -->
-    <LinearLayout
-        android:id="@+id/tasksContainer"
+    <!-- Daily Routine Title -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Your Daily Routine"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Time Picker -->
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner"
+        android:layout_gravity="center"/>
+
+    <!-- Task Description Input -->
+    <EditText
+        android:id="@+id/taskDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
+        android:hint="Task Description"
+        android:inputType="text"
         android:background="@drawable/form_background"
-        android:elevation="4dp"
-        android:layout_marginBottom="24dp">
+        android:padding="10dp"
+        android:layout_marginTop="16dp"/>
 
-        <!-- Initial 4 rows for task input fields -->
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Task 1"
-            android:backgroundTint="@color/primaryColor"
-            android:padding="12dp"
-            android:textSize="16sp"
-            android:layout_marginBottom="12dp"
-            android:inputType="text"/>
+    <!-- Task Type Spinner -->
+    <Spinner
+        android:id="@+id/taskTypeSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/spinner_background"
+        android:padding="10dp"
+        android:layout_marginTop="8dp"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Task 2"
-            android:backgroundTint="@color/primaryColor"
-            android:padding="12dp"
-            android:textSize="16sp"
-            android:layout_marginBottom="12dp"
-            android:inputType="text"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Task 3"
-            android:backgroundTint="@color/primaryColor"
-            android:padding="12dp"
-            android:textSize="16sp"
-            android:layout_marginBottom="12dp"
-            android:inputType="text"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Task 4"
-            android:backgroundTint="@color/primaryColor"
-            android:padding="12dp"
-            android:textSize="16sp"
-            android:layout_marginBottom="12dp"
-            android:inputType="text"/>
-
-    </LinearLayout>
-
-    <!-- Button to add more rows -->
+    <!-- Submit Button -->
     <Button
-        android:id="@+id/addTaskButton"
+        android:id="@+id/submitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Task"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Tasks List Header -->
+    <TextView
+        android:id="@+id/tasksHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+ Add More Task"
-        android:textSize="16sp"
-        android:padding="10dp"
-        android:backgroundTint="@color/primaryColor"
-        android:textColor="@android:color/white"
-        android:layout_gravity="center_horizontal"
-        android:elevation="4dp"/>
+        android:text="Tasks"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="24dp"/>
+
+    <!-- List of Tasks -->
+    <ListView
+        android:id="@+id/taskList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="1dp"
+        android:layout_marginTop="8dp"/>
 
 </LinearLayout>
