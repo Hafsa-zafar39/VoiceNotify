@@ -1,9 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     android:background="@drawable/form_background">
 
@@ -13,130 +11,193 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Form with Border and Shadow -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:cardElevation="12dp"
-            app:cardCornerRadius="16dp"
-            app:cardBackgroundColor="@color/white">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="12dp">
-
-                <!-- Welcome Message -->
-                <TextView
-                    android:id="@+id/welcomeMessage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Welcome to Voice Notify!"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/teal500"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="16dp"
-                    android:shadowColor="@color/teal500"
-                    android:shadowDx="2"
-                    android:shadowDy="2"
-                    android:shadowRadius="3"/>
-
-                <!-- Daily Routine Title -->
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Enter Your Daily Routine"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"/>
-
-                <!-- Time Picker -->
-                <TimePicker
-                    android:id="@+id/timePicker"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:timePickerMode="spinner"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/spinner_background"/>
-
-                <!-- Task Description Input -->
-                <EditText
-                    android:id="@+id/taskDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Task Description"
-                    android:inputType="text"
-                    android:textColor="@color/black"
-                    android:background="@color/blueGray"
-                    android:padding="10dp"
-                    android:textSize="16sp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"/>
-
-                <!-- Task Type Spinner -->
-                <Spinner
-                    android:id="@+id/taskTypeSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/spinner_background"
-                    android:padding="10dp"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginBottom="10dp"/>
-
-                <!-- Notes Input -->
-                <EditText
-                    android:id="@+id/notes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Additional Notes (Optional)"
-                    android:inputType="textMultiLine"
-                    android:minLines="3"
-                    android:textColor="@color/black"
-                    android:background="@drawable/spinner_background"
-                    android:padding="10dp"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="8dp"/>
-
-                <!-- Submit Button -->
-                <Button
-                    android:id="@+id/submitButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Add Task"
-                    android:backgroundTint="@color/teal500"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:padding="12dp"
-                    android:layout_marginTop="12dp"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Tasks List Header -->
+        <!-- Welcome Message Centered at the Top -->
         <TextView
-            android:id="@+id/tasksHeader"
+            android:id="@+id/welcomeMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tasks"
-            android:textSize="20sp"
+            android:text="Welcome to Voice Notify!"
+            android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginTop="16dp"/>
+            android:textColor="@color/teal500"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:shadowColor="@color/teal500"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3" />
 
-        <!-- List of Tasks -->
-        <ListView
-            android:id="@+id/taskList"
+        <!-- Main Content Section: Left Form and Right Notes Container -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-        android:dividerHeight="1dp"
-        android:layout_marginTop="8dp"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Form Section on the Left -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                app:cardElevation="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:id="@+id/formContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <!-- Daily Routine Title -->
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Enter Your Daily Routine"
+                        android:textSize="21sp"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="10dp"/>
+
+                    <!-- Time Picker -->
+                    <TimePicker
+                        android:id="@+id/timePicker"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:timePickerMode="spinner"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/spinner_background"/>
+
+                    <!-- Task Description Input -->
+                    <EditText
+                        android:id="@+id/taskDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Task Description"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        android:background="@color/blueGray"
+                        android:padding="10dp"
+                        android:textSize="16sp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"/>
+
+                    <!-- Task Type Spinner -->
+                    <Spinner
+                        android:id="@+id/taskTypeSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/spinner_background"
+                        android:padding="10dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="10dp"/>
+
+                    <!-- Submit Button -->
+                    <Button
+                        android:id="@+id/submitButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Add Task"
+                        android:backgroundTint="@color/teal500"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:padding="12dp"
+                        android:layout_marginTop="12dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Notes Section on the Right -->
+            <LinearLayout
+                android:id="@+id/notesContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:background="@color/white"
+                android:layout_margin="8dp"
+                app:cardElevation="8dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <!-- Image Above the Notes -->
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/appimg1"
+                    android:scaleType="centerCrop"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- Notes Box -->
+                <EditText
+                    android:id="@+id/notesBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="315sp"
+                    android:hint="Write your notes here"
+                    android:inputType="textMultiLine"
+                    android:minLines="5"
+                    android:textColor="@color/black"
+                    android:background="@drawable/spinner_background"
+                    android:padding="10dp"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Task Table to Display Added Tasks -->
+        <TableLayout
+            android:id="@+id/taskTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:stretchColumns="1"
+            android:padding="8dp"
+            android:background="@color/white"
+            android:divider="@android:color/darker_gray"
+            android:showDividers="middle">
+
+            <!-- Table Headers -->
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time"
+                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Type"
+                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Notes"
+                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:textColor="@color/black"/>
+            </TableRow>
+
+            <!-- Dynamic Rows will be added here -->
+        </TableLayout>
 
     </LinearLayout>
-
 </ScrollView>
