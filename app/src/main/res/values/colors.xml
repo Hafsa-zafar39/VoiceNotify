@@ -9,6 +9,9 @@
 
     <!-- Additional Colors -->
     <color name="blueGray">#607D8B</color>>
+    <color name="semi">#B3FFFFFF</color>>
+    <color name="semi1">#80FFFFFF</color>>
+
     <color name="colorPrimaryDark">#64B5F6</color> <!-- Slightly Darker Blue -->
     <color name="colorAccent">#FFAB91</color> <!-- Light Coral -->
 
@@ -44,6 +47,12 @@
     <color name="lightGreen500">#8BC34A</color>  <!-- Bright Light Green -->
     <color name="lime500">#CDDC39</color>  <!-- Lime Green -->
     <color name="teal500">#009688</color>  <!-- Teal -->
+    <color name="teal400">#26A69A</color> <!-- Lighter Teal -->
+    <color name="teal600">#00796B</color> <!-- Darker Teal -->
+    <color name="teal700">#004D40</color> <!-- More Intense Dark Teal -->
+    <color name="teal100">#B2DFDB</color> <!-- Light Teal -->
+    <color name="teal200">#80CBC4</color> <!-- Light Teal Shade -->
+    <color name="teal300">#4DB6AC</color> <!-- Lighter Teal with less saturation -->
     <color name="emerald">#50C878</color>  <!-- Emerald Green -->
     <color name="forestGreen">#228B22</color>  <!-- Forest Green -->
     <color name="oliveGreen">#808000</color>  <!-- Olive Green -->

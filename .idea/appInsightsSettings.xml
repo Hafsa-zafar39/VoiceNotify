@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.sid.voicenot" />
+                  <option name="mobileSdkAppId" value="1:298234190293:android:9703a61c707270d565855c" />
+                  <option name="projectId" value="voice-notify-166c4" />
+                  <option name="projectNumber" value="298234190293" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

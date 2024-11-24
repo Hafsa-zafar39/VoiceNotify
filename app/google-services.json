@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "298234190293",
+    "project_id": "voice-notify-166c4",
+    "storage_bucket": "voice-notify-166c4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:298234190293:android:9703a61c707270d565855c",
+        "android_client_info": {
+          "package_name": "com.sid.voicenot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_9-93XmpR5Y6Q6mLrNp5m9GODf3oxS7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

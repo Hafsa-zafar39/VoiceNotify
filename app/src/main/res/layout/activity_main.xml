@@ -81,7 +81,7 @@
                         android:id="@+id/taskDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Task Description"
+                        android:hint="Task.."
                         android:inputType="text"
                         android:textColor="@color/black"
                         android:background="@color/blueGray"
@@ -89,8 +89,6 @@
                         android:textSize="16sp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"/>
-
-                    <!-- Task Type Spinner -->
                     <Spinner
                         android:id="@+id/taskTypeSpinner"
                         android:layout_width="match_parent"
@@ -99,6 +97,7 @@
                         android:padding="10dp"
                         android:layout_marginTop="6dp"
                         android:layout_marginBottom="10dp"/>
+
 
                     <!-- Submit Button -->
                     <Button
@@ -141,7 +140,7 @@
                 <EditText
                     android:id="@+id/notesBox"
                     android:layout_width="match_parent"
-                    android:layout_height="315sp"
+                    android:layout_height="270sp"
                     android:hint="Write your notes here"
                     android:inputType="textMultiLine"
                     android:minLines="5"

@@ -1,18 +1,26 @@
 package com.sid.voicenot;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp extends AppCompatActivity {
 
     private EditText usernameInput, passwordInput, confirmPasswordInput;
     private Button signUpButton;
+    private TextView redirectToLogin;
+
+    // Firebase Database reference
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,40 +32,59 @@ public class SignUp extends AppCompatActivity {
         passwordInput = findViewById(R.id.passwordInput);
         confirmPasswordInput = findViewById(R.id.confirmPasswordInput);
         signUpButton = findViewById(R.id.signUpButton);
+        redirectToLogin = findViewById(R.id.redirectToLogin);
 
-        // Handle SignUp button click
-        signUpButton.setOnClickListener(v -> {
-            String username = usernameInput.getText().toString();
-            String password = passwordInput.getText().toString();
-            String confirmPassword = confirmPasswordInput.getText().toString();
+        // Initialize Firebase Database
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
 
-            if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-                return;
+        // Set click listener for Sign Up button
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = usernameInput.getText().toString();
+                String password = passwordInput.getText().toString();
+                String confirmPassword = confirmPasswordInput.getText().toString();
+
+                // Validate inputs
+                if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                    Toast.makeText(SignUp.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                } else if (!password.equals(confirmPassword)) {
+                    Toast.makeText(SignUp.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Save data to Firebase Database
+                    databaseReference.child(username).setValue(new User(username, password))
+                            .addOnSuccessListener(aVoid -> {
+                                Toast.makeText(SignUp.this, "Signup Successful", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(SignUp.this, Login.class);
+                                startActivity(intent);
+                                finish();
+                            })
+                            .addOnFailureListener(e ->
+                                    Toast.makeText(SignUp.this, "Signup Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+                            );
+                }
             }
-
-            if (!password.equals(confirmPassword)) {
-                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            // Insert user data into database
-            UserDatabaseHelper dbHelper = new UserDatabaseHelper(this);
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-            ContentValues values = new ContentValues();
-            values.put("username", username);
-            values.put("password", password);
-
-            long newRowId = db.insert("users", null, values);
-            if (newRowId != -1) {
-                Toast.makeText(this, "Sign Up Successful!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, Login.class));
-                finish();
-            } else {
-                Toast.makeText(this, "Sign Up Failed", Toast.LENGTH_SHORT).show();
-            }
-            db.close();
         });
+
+        // Set click listener for Login redirect
+        redirectToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignUp.this, Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+}
+
+// User model class
+class User {
+    public String username;
+    public String password;
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 }
